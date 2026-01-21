@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Learning Platform</title>
+    <!-- Google Font for Headings -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="learning.css">
+</head>
+<body>
+<header>
+    <h1>E-Learning Platform</h1>
+    <p>Learn Anytime, Anywhere</p>
+</header>
+<div class="btn-container">
+    <button onclick="showSection('courses')">Courses</button>
+    <button onclick="showSection('video')">Video</button>
+</div>
+<!-- COURSES SECTION -->
+<section id="courses" class="section">
+    <h2>Available Courses</h2>
+    <div class="course-card" onclick="loadVideo('ds')">
+        <h3>Data Structures</h3>
+        <p>Arrays, Linked Lists, Trees</p>
+        <div class="progress"><div class="progress-bar" style="width:75%">75%</div></div>
+    </div>
+    <div class="course-card" onclick="loadVideo('web')">
+        <h3>Web Development</h3>
+        <p>HTML, CSS, JavaScript</p>
+        <div class="progress"><div class="progress-bar" style="width:90%">90%</div></div>
+    </div>
+    <div class="course-card" onclick="loadVideo('dbms')">
+        <h3>DBMS</h3>
+        <p>SQL, Normalization</p>
+        <div class="progress"><div class="progress-bar" style="width:65%">65%</div></div>
+    </div>
+    <div class="course-card" onclick="loadVideo('cn')">
+        <h3>Computer Networks</h3>
+        <p>OSI Model, TCP/IP</p>
+        <div class="progress"><div class="progress-bar" style="width:50%">50%</div></div>
+    </div>
+    <div class="course-card" onclick="loadVideo('os')">
+        <h3>Operating Systems</h3>
+        <p>Processes, Scheduling</p>
+        <div class="progress"><div class="progress-bar" style="width:55%">55%</div></div>
+    </div>
+    <div class="course-card" onclick="loadVideo('se')">
+        <h3>Software Engineering</h3>
+        <p>SDLC, Agile</p>
+        <div class="progress"><div class="progress-bar" style="width:70%">70%</div></div>
+    </div>
+    <div class="course-card" onclick="loadVideo('ai')">
+        <h3>Artificial Intelligence</h3>
+        <p>Search, Logic</p>
+        <div class="progress"><div class="progress-bar" style="width:60%">60%</div></div>
+    </div>
+    <div class="course-card" onclick="loadVideo('ml')">
+        <h3>Machine Learning</h3>
+        <p>Regression, Classification</p>
+        <div class="progress"><div class="progress-bar" style="width:45%">45%</div></div>
+    </div>
+</section>
+<!-- VIDEO SECTION -->
+<section id="video" class="section">
+    <h2 id="videoTitle">Course Video</h2>
+    <div class="video-container">
+        <iframe id="courseVideo" allowfullscreen></iframe>
+    </div>
+</section>
+<footer>
+    <p>© 2026 E-Learning Platform</p>
+</footer>
+<script>
+function showSection(id) {
+    document.querySelectorAll(".section").forEach(section => {
+        section.style.display = "none";
+    });
+    document.getElementById(id).style.display = "block";
+}
+function loadVideo(course) {
+    const video = document.getElementById("courseVideo");
+    const title = document.getElementById("videoTitle");
+    const courses = {
+        ds:  { name: "Data Structures", video: "https://www.youtube.com/embed/BBpAmxU_NQo" },
+        web: { name: "Web Development", video: "https://www.youtube.com/embed/Q33KBiDriJY" },
+        dbms:{ name: "DBMS", video: "https://www.youtube.com/embed/HXV3zeQKqGY" },
+        cn:  { name: "Computer Networks", video: "https://www.youtube.com/embed/qiQR5rTSshw" },
+        os:  { name: "Operating Systems", video: "https://www.youtube.com/embed/vBURTt97EkA" },
+        se:  { name: "Software Engineering", video: "https://www.youtube.com/embed/O753uuutqH8" },
+        ai:  { name: "Artificial Intelligence", video: "https://www.youtube.com/embed/JMUxmLyrhSk" },
+        ml:  { name: "Machine Learning", video: "https://www.youtube.com/embed/GwIo3gDZCVQ" }
+    };
+    title.innerText = courses[course].name + " Video";
+    video.src = courses[course].video;
+
+    showSection("video");
+}
+showSection("courses");
+</script>
+</body>
+</html>
